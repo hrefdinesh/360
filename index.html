@@ -24,6 +24,7 @@
 	const panorama = new PANOLENS.ImagePanorama( 'https://cdn.jsdelivr.net/gh/hrefdinesh/360/dji_fly_20240402_184142_0236_1712063702343_pano%20(1).jpg' );
 	const viewer = new PANOLENS.Viewer({
 		controlBar:false, 
+		cameraFov:80,
 		initialLookAt:new THREE.Vector3(45, -90, 0),
 	});
 	viewer.add( panorama );
