@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Test</title>
+    <style type="text/css">
+        body{
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+
+
+
+<head>
+    <!-- for optimal display on high DPI devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.min.css" />
+</head>
+
+<!-- the viewer container must have a defined size -->
+<div id="viewer" style="width: 100vw; height: 100vh;"></div>
+
+<script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three/build/three.module.js",
+            "@photo-sphere-viewer/core": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.module.js",
+            "@photo-sphere-viewer/gyroscope-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/gyroscope-plugin@5/index.module.js"
+        }
+    }
+</script>
+
+<script type="module">
+    import { Viewer } from '@photo-sphere-viewer/core';
+    import { GyroscopePlugin } from '@photo-sphere-viewer/gyroscope-plugin';
+
+    const viewer = new Viewer({
+        plugins: [ GyroscopePlugin],
+        container: document.querySelector('#viewer'),
+        panorama: 'https://cdn.jsdelivr.net/gh/hrefdinesh/360/dji_fly_20240402_184142_0236_1712063702343_pano%20(1).jpg',
+        navbar: ['fullscreen'],
+    });
+</script>
+
+</body>
+</html>
