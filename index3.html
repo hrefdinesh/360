@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test</title>
+    <style type="text/css">
+        body{
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+
+
+
+<head>
+    <!-- for optimal display on high DPI devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.min.css" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/markers-plugin/index.min.css" />
+
+
+</head>
+
+<!-- the viewer container must have a defined size -->
+<div id="viewer" style="width: 100vw; height: 100vh;"></div>
+
+<script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js",
+            "@photo-sphere-viewer/core": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.module.js",
+            "@photo-sphere-viewer/markers-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/markers-plugin/index.module.js",   
+            "@photo-sphere-viewer/gyroscope-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/gyroscope-plugin@5/index.module.js"
+        }
+    }
+</script>
+
+<script type="module">
+    import { Viewer } from '@photo-sphere-viewer/core';
+    import { MarkersPlugin } from '@photo-sphere-viewer/markers-plugin';
+    import { GyroscopePlugin } from '@photo-sphere-viewer/gyroscope-plugin';
+
+    const viewer = new Viewer({
+        plugins: [ 
+            [MarkersPlugin, {
+            markers: [
+                {
+                    "id": "marker-l7wv13ao6i",
+                    "polygon": [[0.044,-0.836],[0.461,-0.769],[0.612,-0.896],[0.442,-0.97],[1.591,-1.251],[1.654,-1.493]],
+                    "svgStyle": {
+                        "fill": "#E84B3C",
+                        "fillOpacity": 0.5,
+                        "stroke": "#C0382B",
+                        "strokeWidth": 2
+                    }
+                },
+                {
+                    "id": "marker-xqi5ljuccja",
+                    "image": "https://photo-sphere-viewer-data.netlify.app/assets/pictos/pin-blue.png",
+                    "position": {
+                        "yaw": 0.51,
+                        "pitch": -1.07
+                    },
+                    "size": {
+                        "width": 32,
+                        "height": 32
+                    },
+                    "anchor": "bottom center",
+                    "tooltip": {
+                        "content": "My land",
+                        "position": "top center",
+                        "trigger": "hover"
+                    }
+                },
+                {
+                    "id": "marker-lq1pgpv02l",
+                    "image": "https://photo-sphere-viewer-data.netlify.app/assets/pictos/pin-red.png",
+                    "position": {
+                        "yaw": 3.152,
+                        "pitch": -0.115
+                    },
+                    "size": {
+                        "width": 32,
+                        "height": 32
+                    },
+                    "anchor": "bottom center",
+                    "tooltip": {
+                        "content": "Amman Kovil",
+                        "position": "top center",
+                        "trigger": "hover"
+                    }
+                },
+                {
+                    "id": "marker-3hkbncg1m5k",
+                    "image": "https://photo-sphere-viewer-data.netlify.app/assets/pictos/pin-red.png",
+                    "position": {
+                        "yaw": 0.054,
+                        "pitch": -0.197
+                    },
+                    "size": {
+                        "width": 32,
+                        "height": 32
+                    },
+                    "anchor": "bottom center",
+                    "tooltip": {
+                        "content": "Bus stand",
+                        "position": "top center",
+                        "trigger": "hover"
+                    },
+                    "hoverScale": { amount: 1.5, easing: 'ease-in-out', duration: 1000 }
+                }
+            ],
+            }],
+            [GyroscopePlugin]
+        ],
+        container: document.querySelector('#viewer'),
+        panorama: 'https://cdn.jsdelivr.net/gh/hrefdinesh/360/dji_fly_20240402_184142_0236_1712063702343_pano%20(1).jpg'
+    });
+</script>
+
+</body>
+</html>
