@@ -9,7 +9,7 @@
             padding: 0;
             margin: 0;
         }
-	    #viewer{
+        #viewer{
             height: 100dvh !important;
         }
         /*.psv-navbar{
@@ -29,7 +29,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.min.css" />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/compass-plugin@5/index.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/markers-plugin/index.min.css" />
 
 
@@ -44,6 +44,7 @@
             "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js",
             "@photo-sphere-viewer/core": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core/index.module.js",
             "@photo-sphere-viewer/markers-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/markers-plugin/index.module.js",   
+            "@photo-sphere-viewer/compass-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/compass-plugin@5/index.module.js",
             "@photo-sphere-viewer/gyroscope-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/gyroscope-plugin@5/index.module.js"
         }
     }
@@ -53,93 +54,100 @@
     import { Viewer } from '@photo-sphere-viewer/core';
     import { MarkersPlugin } from '@photo-sphere-viewer/markers-plugin';
     import { GyroscopePlugin } from '@photo-sphere-viewer/gyroscope-plugin';
+    import { CompassPlugin } from '@photo-sphere-viewer/compass-plugin';
 
     const viewer = new Viewer({
         plugins: [ 
+            [CompassPlugin, {
+                hotspots: [
+                    { yaw: '0deg' },
+                    { yaw: '90deg' },
+                    { yaw: '180deg' },
+                    { yaw: '270deg' },
+                ],
+            }],
             [MarkersPlugin, {
             markers: [
-                {
-                    "id": "marker-l7wv13ao6i",
-                    "polygon": [[0.044,-0.836],[0.461,-0.769],[0.612,-0.896],[0.442,-0.97],[1.591,-1.251],[1.654,-1.493]],
+                  {
+                    "id": "marker-ykevffg8fuj",
+                    "polygon": [[3.212,-0.807],[3.595,-0.76],[3.774,-0.908],[3.61,-0.987],[4.846,-1.292],[5.026,-1.506]],
+                    "tooltip": {
+                      "content": "My land",
+                      "position": "top center",
+                      "trigger": "hover"
+                    },
                     "svgStyle": {
-                        "fill": "#E84B3C",
-                        "fillOpacity": 0.5,
-                        "stroke": "#C0382B",
-                        "strokeWidth": 2
+                      "fill": "#E84B3C",
+                      "fillOpacity": 0.5,
+                      "stroke": "#C0382B",
+                      "strokeWidth": 2
                     }
-                },
-                {
-                    "id": "marker-land",
-                    "image": "https://photo-sphere-viewer-data.netlify.app/assets/pictos/pin-blue.png",
-                    "position": {
-                        "yaw": 0.51,
-                        "pitch": -1.07
-                    },
-                    "size": {
-                        "width": 32,
-                        "height": 32
-                    },
-                    "anchor": "bottom center",
-                    "tooltip": {
-                        "content": "My land",
-                        "className": 'custom-tooltip',
-                        "position": "top center",
-                        "trigger": "click"
-                    }
-                },
-                {
-                    "id": "marker-kovil",
+                  },
+                  {
+                    "id": "marker-uh9xv2tkm",
                     "image": "https://photo-sphere-viewer-data.netlify.app/assets/pictos/pin-red.png",
                     "position": {
-                        "yaw": 3.152,
-                        "pitch": -0.115
+                      "yaw": 5.031,
+                      "pitch": -1.399
                     },
                     "size": {
-                        "width": 32,
-                        "height": 32
+                      "width": 32,
+                      "height": 32
                     },
-                    "anchor": "bottom center",
-                    "tooltip": {
-                        "content": "Amman Kovil",
-                        "className": 'custom-tooltip',
-                        "position": "top center",
-                        "trigger": "click"
-                    }
-                },
-                {
-                    "id": "marker-bus",
+                    "anchor": "bottom center"
+                  },
+                  {
+                    "id": "marker-6lfvcqlozuj",
                     "image": "https://photo-sphere-viewer-data.netlify.app/assets/pictos/pin-red.png",
                     "position": {
-                        "yaw": 0.054,
-                        "pitch": -0.197
+                      "yaw": 3.186,
+                      "pitch": -0.196
                     },
                     "size": {
-                        "width": 32,
-                        "height": 32
+                      "width": 32,
+                      "height": 32
                     },
-                    "anchor": "bottom center",
-                    "tooltip": {
-                        "content": "Bus stand",
-                        "className": 'custom-tooltip',
-                        "position": "top center",
-                        "trigger": "click"
+                    "anchor": "bottom center"
+                  },
+                  {
+                    "id": "marker-n8imh1eyhib",
+                    "image": "https://photo-sphere-viewer-data.netlify.app/assets/pictos/pin-red.png",
+                    "position": {
+                      "yaw": 6.264,
+                      "pitch": -0.11
                     },
-                }
-            ],
+                    "size": {
+                      "width": 32,
+                      "height": 32
+                    },
+                    "anchor": "bottom center"
+                  },
+                  {
+                    "id": "marker-vsbwpwt2k2s",
+                    "polyline": [[4.776,-0.917],[5.402,-1.424],[1.093,-1.373],[1.328,-1.146],[1.424,-0.533],[1.342,-0.396],[1.297,-0.283]],
+                    "svgStyle": {
+                      "stroke": "#F2C511",
+                      "strokeWidth": 5
+                    }
+                  }
+                ]
             }],
             [GyroscopePlugin]
         ],
         container: document.querySelector('#viewer'),
         panorama: 'https://cdn.jsdelivr.net/gh/hrefdinesh/360/dji_fly_20240402_184142_0236_1712063702343_pano%20(1).jpg',
-        navbar: ['fullscreen','gyroscope'],        
+        navbar: ['fullscreen','gyroscope'],   
+        panoData:{
+            poseHeading:180,
+        }
     });
 
     const markersPlugin = viewer.getPlugin(MarkersPlugin);
     viewer.addEventListener('ready', () => {
     viewer
         .animate({
-            yaw: 0,
-            pitch: 0.5,
+            yaw: 90,
+            pitch: 0,
             speed: 1000,
         })
         .then(() => {
