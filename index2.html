@@ -9,12 +9,14 @@
             padding: 0;
             margin: 0;
         }
-	.psv-navbar{
+        /*.psv-navbar{
             z-index: 111;
         }
         .psv-navbar--open {
             top: calc(100vh - 100px);
-        }
+        }*/
+
+
     </style>
 
 
@@ -64,7 +66,7 @@
                     }
                 },
                 {
-                    "id": "marker-xqi5ljuccja",
+                    "id": "marker-land",
                     "image": "https://photo-sphere-viewer-data.netlify.app/assets/pictos/pin-blue.png",
                     "position": {
                         "yaw": 0.51,
@@ -77,12 +79,13 @@
                     "anchor": "bottom center",
                     "tooltip": {
                         "content": "My land",
+                        "className": 'custom-tooltip',
                         "position": "top center",
-                        "trigger": "hover"
+                        "trigger": "click"
                     }
                 },
                 {
-                    "id": "marker-lq1pgpv02l",
+                    "id": "marker-kovil",
                     "image": "https://photo-sphere-viewer-data.netlify.app/assets/pictos/pin-red.png",
                     "position": {
                         "yaw": 3.152,
@@ -95,12 +98,13 @@
                     "anchor": "bottom center",
                     "tooltip": {
                         "content": "Amman Kovil",
+                        "className": 'custom-tooltip',
                         "position": "top center",
-                        "trigger": "hover"
+                        "trigger": "click"
                     }
                 },
                 {
-                    "id": "marker-3hkbncg1m5k",
+                    "id": "marker-bus",
                     "image": "https://photo-sphere-viewer-data.netlify.app/assets/pictos/pin-red.png",
                     "position": {
                         "yaw": 0.054,
@@ -113,10 +117,10 @@
                     "anchor": "bottom center",
                     "tooltip": {
                         "content": "Bus stand",
+                        "className": 'custom-tooltip',
                         "position": "top center",
-                        "trigger": "hover"
+                        "trigger": "click"
                     },
-                    "hoverScale": { amount: 1.5, easing: 'ease-in-out', duration: 1000 }
                 }
             ],
             }],
@@ -124,8 +128,23 @@
         ],
         container: document.querySelector('#viewer'),
         panorama: 'https://cdn.jsdelivr.net/gh/hrefdinesh/360/dji_fly_20240402_184142_0236_1712063702343_pano%20(1).jpg',
-        navbar: ['zoom','gyroscope'],
+        navbar: ['fullscreen','gyroscope'],        
     });
+
+    const markersPlugin = viewer.getPlugin(MarkersPlugin);
+    viewer.addEventListener('ready', () => {
+    viewer
+        .animate({
+            yaw: 0,
+            pitch: 0.5,
+            speed: 1000,
+        })
+        .then(() => {
+            markersPlugin.showMarkerTooltip('marker-land');
+            markersPlugin.showMarkerTooltip('marker-kovil');
+            markersPlugin.showMarkerTooltip('marker-bus');
+        });
+}, { once: true });
 </script>
 
 </body>
